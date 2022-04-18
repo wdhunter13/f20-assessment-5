@@ -1,19 +1,51 @@
-
+const Sequelize = require(sequelize)
+const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+})
 
 module.exports = {
     seed: (req, res) => {
-        sequelize.query(`
+        sequelize.query(
+            
+            CREATE TABLE cities (
+                city_id: SERIAL PRIMARY KEY,
+                name: VARCHAR(100),
+                rating: INTEGER,
+                country_id: 
+            )
+
+            createCity (req, res) => {
+                sequelize.query('select * from createCity;')
+                  .then(dbRes => res.send(dbRes))
+              })
+
+              INSERT INTO createCity (name, rating, countryID)
+                VALUES ('', '', );
+
+              getCountries (req, res) => {
+                sequelize.query('select * from countries;')
+                  .then(dbRes => res.send(dbRes))
+              })
+
+
+
+        
             drop table if exists cities;
             drop table if exists countries;
 
-            create table countries (
+            CREATE TABLE countries (
                 country_id serial primary key, 
                 name varchar
             );
 
-            *****YOUR CODE HERE*****
+            
 
-            insert into countries (name)
+            INSERT INTO countries (name)
             values ('Afghanistan'),
             ('Albania'),
             ('Algeria'),
